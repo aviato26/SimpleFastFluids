@@ -5,7 +5,6 @@ import { GPUComputationRenderer } from 'three/examples/jsm/misc/GPUComputationRe
 import fluidFrag from './shaders/fluidFrag.js';
 import finalFrag from './shaders/finalFrag.js';
 import vertex from './shaders/vertex.js';
-import img from './img.png';
 
 export default class Main
 {
@@ -18,8 +17,6 @@ export default class Main
 
     // if screen is larger than tablet we will index 1 to select larger img
     this.screenSize = (this.width < 768) ? 0 : 1;
-
-    //this.img = [ new THREE.TextureLoader().load(imgMobile), new THREE.TextureLoader().load(imgDesktop) ];
 
     this.time = 0.0;
 
