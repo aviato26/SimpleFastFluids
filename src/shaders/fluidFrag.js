@@ -9,8 +9,9 @@ exports.fluidFrag =
 uniform vec2 res;
 uniform float iTime;
 uniform vec2 mouse;
+uniform sampler2D bufferTexture;
 
-#define T(p) texture(texturePosition,(p) / res.xy)
+#define T(p) texture(bufferTexture,(p) / res.xy)
 #define length2(p) dot(p,p)
 
 
@@ -132,8 +133,7 @@ void main() {
   // external source
 	// using mouse position instead of random coordinates from pen function
   vec2 m = mouse;
-  c.xyw += dt * exp(-length2(uv - m)/50.) * vec3(m - pen(iTime-0.1), 1);
-
+  c.xyw += dt * exp(-length2(uv - m) / 10.) * vec3(m - vec2(m.x + iTime, m.y + sin(iTime)), 1);
   // dissipation
   c.w -= dt*0.0005;
 
